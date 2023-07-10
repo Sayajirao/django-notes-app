@@ -14,10 +14,8 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install SSH client
-        run: sudo apt-get install -y ssh
+        run: sudo apt-get update && sudo apt-get install -y openssh-client
 
       - name: SSH into server
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ubuntu@65.0.89.198 'cd /home/ubuntu/django-notes-app && git pull'
-          # Replace "user" with your server's username and "your-server-ip" with the actual IP address
-          # Replace "/path/to/your/app" with the actual path to your application on the server
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ubuntu@65.0.89.198 'cd /home/ubuntu/django-notes-app && git pull'
