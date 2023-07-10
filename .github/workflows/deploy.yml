@@ -18,6 +18,6 @@ jobs:
 
       - name: SSH into server
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ubuntu@65.0.89.198 'cd /home/ubuntu && git pull'
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ubuntu@65.0.89.198 'cd /home/ubuntu/django-notes-app && git pull'
           # Replace "user" with your server's username and "your-server-ip" with the actual IP address
           # Replace "/path/to/your/app" with the actual path to your application on the server
