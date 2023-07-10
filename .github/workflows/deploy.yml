@@ -23,4 +23,4 @@ jobs:
 		  username: ubuntu
 		  key: ${{ secrets.SSH_PRIVATE_KEY }}
 		  script: |
-			  'cd /home/ubuntu/django-notes-app && git pull'
+			'cd /home/ubuntu/django-notes-app && git pull'
