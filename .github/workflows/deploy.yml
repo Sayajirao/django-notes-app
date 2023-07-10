@@ -1,4 +1,4 @@
-name: Deploy to Ubuntu Server
+name: Deploy to Server
 
 on:
   push:
@@ -13,12 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.5.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
+      - name: Install SSH client
+        run: sudo apt-get install -y ssh
 
-      - name: Deploy to server
+      - name: SSH into server
         run: |
-          ssh ubuntu@65.0.89.198 'cd /home/ubuntu && git pull'
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_KEY }} ubuntu@65.0.89.198 'cd /home/ubuntu && git pull'
           # Replace "user" with your server's username and "your-server-ip" with the actual IP address
+          # Replace "/path/to/your/app" with the actual path to your application on the server
